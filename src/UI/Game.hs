@@ -22,6 +22,7 @@ import qualified Graphics.Vty as V
 import Data.Map (Map)
 import qualified Data.Map as M
 import Linear.V2 (V2(..))
+import Graphics.Vty
 
 import Tetris
 
@@ -66,7 +67,9 @@ playGame lvl mp = do
     writeBChan chan Tick
     threadDelay delay
   initialGame <- initGame lvl
-  ui <- customMain (V.mkVty V.defaultConfig) (Just chan) app $ UI
+  cfg <- standardIOConfig
+  vty <- mkVty cfg
+  ui <- customMain vty (V.mkVty V.defaultConfig) (Just chan) app $ UI
     { _game    = initialGame
     , _preview = mp
     , _locked  = False

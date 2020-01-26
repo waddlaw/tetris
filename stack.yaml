@@ -1,15 +1,6 @@
-flags: {}
-extra-package-dbs: []
+resolver: lts-14.21
 packages:
-  - '.'
-extra-deps:
-  - brick-0.45
-  - config-ini-0.2.4.0
-  - data-clist-0.1.2.1
-  - text-zipper-0.10.1
-  - word-wrap-0.4.1
-  - QuickCheck-2.11.3
-resolver: lts-13.0
+- '.'
 nix:
   packages:
     - gcc
